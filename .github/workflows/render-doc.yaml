@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - master
-  # push:
-  #   paths: ['**.Rmd']
-
 
 name: render-rmarkdown
 
