@@ -8,34 +8,20 @@ on:
 name: render-rmarkdown
 
 jobs:
-  render-rmarkdown:
-    runs-on: ubuntu-latest
-    env:
-      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+  render:
+    name: Render my document
+    runs-on: macOS-latest
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-
-      - uses: r-lib/actions/setup-pandoc@v1
-
+      - uses: actions/checkout@v2
       - uses: r-lib/actions/setup-r@v1
-
+      - uses: r-lib/actions/setup-pandoc@v1
       - uses: r-lib/actions/setup-tinytex@v1
-
-      # - uses: r-lib/actions/setup-renv@v1
-
       - name: Install rmarkdown
         run: Rscript -e 'install.packages("rmarkdown")'
-
       - name: Install stevetemplates
         run: Rscript -e 'install.packages("stevetemplates")'
-
-      - name: Render Rmarkdown files
-        run: |
-          RMD_PATH=($(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '[.]Rmd$'))
-          Rscript -e 'for (f in commandArgs(TRUE)) if (file.exists(f)) rmarkdown::render(f)' ${RMD_PATH[*]}
+      - name: Render my document to all types
+        run: Rscript -e 'rmarkdown::render("docs/skeleton.Rmd", output_format = "all")'
 
       - name: Commit results
         run: |
