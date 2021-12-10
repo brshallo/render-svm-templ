@@ -23,6 +23,9 @@ jobs:
       - name: Render my document to all types
         run: Rscript -e 'rmarkdown::render("my-document/my-document.Rmd", output_format = "all")'
 
+      - name: Render my steves template to pdf
+        run: Rscript -e 'rmarkdown::render("my-document/skeleton.Rmd", output_format = "pdf_document")'
+
       - name: Commit results
         run: |
           git config --local user.name "$GITHUB_ACTOR"
