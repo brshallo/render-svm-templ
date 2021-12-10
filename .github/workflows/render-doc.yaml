@@ -21,7 +21,7 @@ jobs:
       - name: Install stevetemplates
         run: Rscript -e 'install.packages("stevetemplates")'
       - name: Render my document to all types
-        run: Rscript -e 'rmarkdown::render("docs/skeleton.Rmd", output_format = "all")'
+        run: Rscript -e 'rmarkdown::render("my-document/my-document.Rmd", output_format = "all")'
 
       - name: Commit results
         run: |
