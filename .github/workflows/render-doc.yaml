@@ -16,13 +16,24 @@ jobs:
       - uses: r-lib/actions/setup-r@v1
       - uses: r-lib/actions/setup-pandoc@v1
       - uses: r-lib/actions/setup-tinytex@v1
+
       - name: Install rmarkdown
         run: Rscript -e 'install.packages("rmarkdown")'
       - name: Install stevetemplates
         run: Rscript -e 'install.packages("stevetemplates")'
+      - name: Install tinytex r package
+        run: Rscript -e 'install.packages("tinytex")'
+
+      - name: Install cochineal font
+        run: Rscript -e 'tinytex::tlmgr_install("cochineal")'
+      - name: Install fira font
+        run: Rscript -e 'tinytex::tlmgr_install("fira")'
+      - name: Install cochineal FiraSans
+        run: Rscript -e 'tinytex::tlmgr_install("FiraSans")'
+
+
       - name: Render my document to all types
         run: Rscript -e 'rmarkdown::render("my-document/my-document.Rmd", output_format = "all")'
-
       - name: Render my steves template to pdf
         run: Rscript -e 'rmarkdown::render("my-document/skeleton.Rmd", output_format = "pdf_document")'
 
