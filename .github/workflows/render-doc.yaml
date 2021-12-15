@@ -24,11 +24,14 @@ jobs:
       - name: Install tinytex r package
         run: Rscript -e 'install.packages("tinytex")'
 
+      - name: Install tinytex
+        run: Rscript -e 'tinytex::install_tinytex()'
+
       - name: Install cochineal font
         run: Rscript -e 'tinytex::tlmgr_install("cochineal")'
       - name: Install fira font
         run: Rscript -e 'tinytex::tlmgr_install("fira")'
-      - name: Install cochineal FiraSans
+      - name: Install FiraSans
         run: Rscript -e 'tinytex::tlmgr_install("FiraSans")'
 
 
