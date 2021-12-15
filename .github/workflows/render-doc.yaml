@@ -21,14 +21,14 @@ jobs:
         run: Rscript -e 'install.packages("rmarkdown")'
       - name: Install stevetemplates
         run: Rscript -e 'install.packages("stevetemplates")'
-      - name: Install tinytex r package
-        run: Rscript -e 'install.packages("tinytex")'
+      # - name: Install tinytex r package
+      #   run: Rscript -e 'install.packages("tinytex")'
 
 
       - name: Install cochineal font
-        run: Rscript -e 'tinytex::tlmgr_install("cochineal")'
+        run: Rscript -e 'tlmgr install cochineal'
       - name: Install fira font
-        run: Rscript -e 'tinytex::tlmgr_install("fira")'
+        run: Rscript -e 'tlmgr install fira'
 
       - name: Render my document to all types
         run: Rscript -e 'rmarkdown::render("my-document/my-document.Rmd", output_format = "all")'
