@@ -16,7 +16,7 @@ twitter: "@rickmartelWWE"
 linkedin: "steven-miller-05b6851b3"
 geometry: "top=.5in, left =.5in, right=.5in, bottom=.75in"
 mainfont: cochineal
-sansfont: Fira Sans
+sansfont: cochineal
 # monofont: Fira Code # I want to use this, but seems to choke on @
 urlcolor: blue
 fontsize: 11pt
